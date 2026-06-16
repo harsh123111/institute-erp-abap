@@ -1,2 +1,3 @@
 # institute-erp-abap
 SAP ABAP S/4HANA Institute ERP – Full-stack RAP/Fiori portfolio project modeled on CDAC Pune
+Institute-ERP-ABAP is a portfolio-grade SAP S/4HANA application built entirely in ABAP Cloud using the RESTful Application Programming Model (RAP). Modeled on the CDAC Pune institute structure, it manages the full student lifecycle across three programs — DAC, DBDA, and DITISS — spanning admissions, batch scheduling, faculty assignment, internal assessments, fee tracking, and placement records. The backend exposes OData V4 services consumed by SAP Fiori Elements UIs built on CDS Views with access control via DCL. Designed to demonstrate real-world RAP architecture, DDIC object design, and Fiori integration in a single cohesive system.
