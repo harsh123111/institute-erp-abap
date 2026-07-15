@@ -1,0 +1,41 @@
+managed implementation in class zbp_i_iacsd_course unique;
+strict ( 2 );
+with draft;
+
+define behavior for ZI_IACSD_COURSE alias Course
+persistent table ziacsdcourse
+draft table ziacsdcourse_d
+lock master total etag LastChangedAt // to avoid over writting/ concurrent modi
+authorization master ( instance )
+etag master LastChangedAt
+early numbering
+{
+  create ( authorization : global );
+  update;
+  delete;
+  field ( readonly ) CourseId;
+
+  determination SetDefaultValues on modify { create; }
+    validation validateCourse on save { create; }
+    validation validateDuration on save { create; }
+
+  draft action Edit;
+  draft action Activate;
+  draft action Discard;
+  draft action Resume;
+  draft determine action Prepare;
+
+  mapping for ziacsdcourse
+    {
+      CourseId      = course_id;
+      CourseName    = course_name;
+      Description   = description;
+      Status        = status;
+      Duration      = duration;
+      CreatedBy     = created_by;
+      CreatedAt     = created_at;
+      LastChangedBy = last_changed_by;
+      LastChangedAt = last_changed_at;
+      LocalLastChangedAt = local_last_changed_at;
+    }
+}

@@ -1,0 +1,5 @@
+CLASS zbp_i_iacsd_course DEFINITION PUBLIC ABSTRACT FINAL FOR BEHAVIOR OF zi_iacsd_course.
+ENDCLASS.
+
+CLASS zbp_i_iacsd_course IMPLEMENTATION.
+ENDCLASS.
