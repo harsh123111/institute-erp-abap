@@ -1,0 +1,5 @@
+CLASS zbp_i_iacsd_faculties DEFINITION PUBLIC ABSTRACT FINAL FOR BEHAVIOR OF zi_iacsd_faculties.
+ENDCLASS.
+
+CLASS zbp_i_iacsd_faculties IMPLEMENTATION.
+ENDCLASS.

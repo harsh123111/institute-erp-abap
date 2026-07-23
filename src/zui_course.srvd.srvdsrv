@@ -1,4 +1,6 @@
 @EndUserText.label: 'Service def for course'
-define service ZUI_COURSE {
-  expose ZC_COURSE as Course;
+define service Zui_course {
+  expose ZC_COURSE  as Course;
+  expose ZC_SUBJECT as Subject;
+  expose ZC_FACULTY as Faculty;
 }

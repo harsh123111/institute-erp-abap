@@ -1,5 +1,6 @@
 managed implementation in class zbp_i_iacsd_course unique;
 strict ( 2 );
+
 with draft;
 
 define behavior for ZI_IACSD_COURSE alias Course
@@ -8,34 +9,74 @@ draft table ziacsdcourse_d
 lock master total etag LastChangedAt // to avoid over writting/ concurrent modi
 authorization master ( instance )
 etag master LastChangedAt
-early numbering
+early numbering                     // for auto increament id
 {
   create ( authorization : global );
   update;
   delete;
+
+  association _Subject { create; with draft; }
   field ( readonly ) CourseId;
 
-  determination SetDefaultValues on modify { create; }
-    validation validateCourse on save { create; }
-    validation validateDuration on save { create; }
+
+  validation validateCourse on save { create; }
+  validation validateDuration on save { create; }
+
+  action ( features : instance ) ActivateCourse result[1] $self;
+  action ( features : instance ) DeactivateCourse result[1] $self;
 
   draft action Edit;
-  draft action Activate;
+  draft action Activate optimized;
   draft action Discard;
   draft action Resume;
   draft determine action Prepare;
 
   mapping for ziacsdcourse
     {
-      CourseId      = course_id;
-      CourseName    = course_name;
-      Description   = description;
-      Status        = status;
-      Duration      = duration;
-      CreatedBy     = created_by;
-      CreatedAt     = created_at;
-      LastChangedBy = last_changed_by;
-      LastChangedAt = last_changed_at;
+      CourseId           = course_id;
+      CourseName         = course_name;
+      Description        = description;
+      Status             = status;
+      Duration           = duration;
+      CreatedBy          = created_by;
+      CreatedAt          = created_at;
+      LastChangedBy      = last_changed_by;
+      LastChangedAt      = last_changed_at;
       LocalLastChangedAt = local_last_changed_at;
+    }
+
+}
+
+define behavior for ZI_IACSD_SUBJECT alias Subject
+persistent table ziacsd_subject
+draft table ziacsdsubject_d
+lock dependent by _Course
+authorization dependent by _Course
+etag dependent by _Course
+early numbering
+{
+
+  update;
+  delete;
+  field ( readonly ) SubjectId;
+  field ( readonly ) CourseId;
+  association _Course { with draft; }
+
+  validation validateSubject on save { create; }
+  validation validateSubjectDuration on save { create; }
+
+
+  mapping for ziacsd_subject
+    {
+      SubjectId          = subject_id;
+      SubjectName        = subject_name;
+      Description        = description;
+      Duration           = duration;
+      Status             = status;
+      CourseId           = course_id;
+      CreatedBy          = created_by;
+      CreatedAt          = created_at;
+      LastChangedBy      = last_changed_by;
+
     }
 }

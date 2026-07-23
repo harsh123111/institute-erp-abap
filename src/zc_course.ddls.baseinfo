@@ -6,9 +6,14 @@
 "ZI_IACSD_COURSE"
 ],
 "ASSOCIATED":
-[],
+[
+"ZC_SUBJECT",
+"ZI_IACSD_SUBJECT"
+],
 "BASE":
-[],
+[
+"ZI_IACSD_COURSE"
+],
 "ANNO_REF":
 [],
 "SCALAR_FUNCTION":

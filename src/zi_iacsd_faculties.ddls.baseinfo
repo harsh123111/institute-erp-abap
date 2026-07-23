@@ -3,12 +3,10 @@
 {
 "FROM":
 [
-"ZIACSDCOURSE"
+"ZIACSD_FACULTIES"
 ],
 "ASSOCIATED":
-[
-"ZI_IACSD_SUBJECT"
-],
+[],
 "BASE":
 [],
 "ANNO_REF":

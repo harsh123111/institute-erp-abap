@@ -11,20 +11,42 @@
         value: 'CourseId'
     }
 }
+
 annotate entity ZC_COURSE with
 {
+  
   @UI.facet: [
     {
       id: 'General',
-      label: 'General Information',
+      label: 'Course Details',
       purpose: #STANDARD,
       type: #IDENTIFICATION_REFERENCE,
       position: 10
+    },
+    {
+     id: 'Subjects',
+    purpose: #STANDARD,
+    type: #LINEITEM_REFERENCE,
+    label: 'Subjects',
+    position: 20,
+    targetElement: '_Subject'
     }
   ]
+  
   @UI: {
   lineItem: [{ position: 10 }],
-  identification: [{ position: 10 }],
+  identification: [{
+      type: #FOR_ACTION,
+      dataAction: 'ActivateCourse',
+      label: 'Activate',
+      position: 10
+    },
+    {
+      type: #FOR_ACTION,
+      dataAction: 'DeactivateCourse',
+      label: 'Deactivate',
+      position: 20
+    }],
   selectionField: [{
       position: 10 }]
   }
@@ -48,12 +70,12 @@ annotate entity ZC_COURSE with
   identification: [{ position: 40 }],
   selectionField: [{ position: 30 }]
   }
-   @Consumption.valueHelpDefinition: [
+  @Consumption.valueHelpDefinition: [
   {
-    entity: {
-      name    : 'ZI_STATUS_VHP',
-      element : 'Status'
-    }
+   entity: {
+     name    : 'ZI_STATUS_VHP',
+     element : 'Status'
+   }
   }]
   Status;
 
@@ -74,4 +96,4 @@ annotate entity ZC_COURSE with
 
   @UI.identification: [{ position: 90 }]
   LastChangedAt;
-}
+  }

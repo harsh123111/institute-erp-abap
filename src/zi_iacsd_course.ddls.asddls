@@ -4,6 +4,7 @@
 @Search.searchable: true
 define root view entity ZI_IACSD_COURSE
   as select from ziacsdcourse
+  composition [0..*] of ZI_IACSD_SUBJECT as _Subject
 
 {
   key course_id       as CourseId,
@@ -22,5 +23,6 @@ define root view entity ZI_IACSD_COURSE
       @Semantics.systemDateTime.lastChangedAt: true
       last_changed_at as LastChangedAt,
       @Semantics.systemDateTime.localInstanceLastChangedAt: true
-      local_last_changed_at as LocalLastChangedAt
+      local_last_changed_at as LocalLastChangedAt,
+      _Subject
 }

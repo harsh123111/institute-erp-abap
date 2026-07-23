@@ -1,0 +1,70 @@
+@Metadata.layer: #CORE
+
+@UI.headerInfo: {
+    typeName: 'Subject',
+    typeNamePlural: 'Subjects',
+    title: {
+        type: #STANDARD,
+        value: 'SubjectName'
+    },
+    description: {
+        value: 'SubjectId'
+    }
+}
+annotate entity ZC_SUBJECT with
+{
+  @UI.facet: [
+     {
+       id: 'General',
+       label: 'Subject Details',
+       purpose: #STANDARD,
+       type: #IDENTIFICATION_REFERENCE,
+       position: 10
+     }]
+  @UI: {
+  lineItem: [{ position: 10 }],
+  identification: [{ position: 10 }],
+  selectionField: [{
+    position: 10 }]
+  }
+  SubjectId;
+  @UI: {
+  lineItem: [{ position: 20 }],
+  identification: [{ position: 20 }],
+  selectionField: [{
+    position: 20 }]
+  }
+  @Search.defaultSearchElement: true
+  SubjectName;
+  @UI:{ lineItem: [{ position: 30 }], hidden: true}
+  CourseId;
+  @UI: {
+  lineItem: [{ position: 40 }],
+  identification: [{ position: 30 }]
+  }
+  Description;
+  @UI: {
+  lineItem: [{ position: 50 }],
+  identification: [{ position: 40 }]
+  }
+  Duration;
+  @UI: {
+  lineItem: [{ position: 60 }],
+  identification: [{ position: 50 }]
+  }
+  @Consumption.valueHelpDefinition: [
+  {
+   entity: {
+     name    : 'ZI_STATUS_VHP',
+     element : 'Status'
+   }
+  }]
+  Status;
+  @UI.identification: [{ position: 60 }]
+  CreatedBy;
+  @UI.identification: [{ position: 70 }]
+  CreatedAt;
+  @UI.identification: [{ position: 80 }]
+  LastChangedBy;
+
+}

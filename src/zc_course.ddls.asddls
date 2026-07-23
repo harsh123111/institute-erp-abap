@@ -16,5 +16,6 @@ as projection on ZI_IACSD_COURSE
     CreatedAt,
     LastChangedBy,
     LastChangedAt,
-    LocalLastChangedAt
+    LocalLastChangedAt,
+    _Subject : redirected to composition child ZC_SUBJECT
 }

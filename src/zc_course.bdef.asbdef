@@ -8,10 +8,22 @@ define behavior for ZC_COURSE alias Course
   use update;
   use delete;
 
+  use action ActivateCourse;
+  use action DeactivateCourse;
+
   use action Edit;
   use action Activate;
   use action Discard;
   use action Resume;
   use action Prepare;
 
+  use association _Subject { create; with draft; }
+}
+
+define behavior for ZC_SUBJECT alias Subject
+{
+  use update;
+  use delete;
+
+  use association _Course { with draft; }
 }

@@ -1,0 +1,39 @@
+managed implementation in class zbp_i_iacsd_faculties unique;
+strict ( 2 );
+with draft;
+
+define behavior for ZI_IACSD_FACULTIES alias Faculty
+persistent table ziacsd_faculties
+draft table ziacsdfaculty_d
+lock master total etag LastChangedAt
+authorization master ( instance )
+etag master LastChangedAt
+early numbering
+{
+  create ( authorization : global );
+  update;
+  delete;
+  field ( readonly ) FacultyId;
+
+  draft action Edit;
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Resume;
+  draft determine action Prepare;
+
+  mapping for ziacsd_faculties
+  {
+   FacultyId = faculty_id;
+   FacultyName = faculty_name;
+   Email = email;
+   Department = department;
+   Phone = phone;
+   Status = status;
+   CreatedAt = created_at;
+   CreatedBy = created_by;
+   LastChangedAt = last_changed_at;
+   LastChangedBy = last_changed_by;
+   LocalLastChangedAt = local_last_changed_at;
+
+  }
+}
